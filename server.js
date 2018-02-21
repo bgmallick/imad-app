@@ -5,12 +5,72 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+    title : 'Article One | Bishal Guha Mallick',
+     heading: 'Article One'
+     date: 'February 20, 2018',
+     content: `<p>
+                        This is my first article after a long time in HTML. Hopfully as I take this course something will come out of it and I will benfit from this course.
+                    This is just repetetion. This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+               </p>
+               <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p>
+                <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p> `
+};
+
+function createTempleate (data) {
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    
+    var htmlTemplate = `
+                        <html>
+                            <head>
+                                <title>
+                                    ${title}
+                                </title>
+                                <meta name="viewport" content="width=device-width, initial-scale-1" />
+                                <link href="/ui/style.css" rel="stylesheet" />
+                            
+                            </head>
+                            <body>
+                                <div class ="container">
+                                    <div>
+                                         <a href="/"> Home </a>
+                                    </div>
+                                    <hr/>
+                                    <h3>
+                                        ${heading}
+                                    </h3>
+                                    <div>
+                                        ${date}
+                                    </div>
+                                        <div>
+                                            ${content}
+                                        </div>
+                                </div>
+                            </body>
+                        </html>
+                            
+                        
+    
+    `;
+    return htmlTemplate;
+}
+
+
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one', function(req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.send(createTemplate(articleOne));
 });
  
 app.get('/article-two', function(req, res) {
