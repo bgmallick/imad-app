@@ -6,7 +6,7 @@ var app = express();
 app.use(morgan('combined'));
 
 var articles ={
-articleOne : {
+'article-one' : {
      title : 'Article One | Bishal Guha Mallick',
      heading: 'Article One',
      date: 'February 20, 2018',
@@ -21,7 +21,7 @@ articleOne : {
                     This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
                 </p> `
 },
-articleTwo : {
+'article-two' : {
     title : 'Article Two | Bishal Guha Mallick',
      heading: 'Article Two',
      date: 'February 21, 2018',
@@ -36,7 +36,7 @@ articleTwo : {
                     This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
                 </p> `
 },
-articleThree : {
+'article-three' : {
     title : 'Article Three | Bishal Guha Mallick',
      heading: 'Article Three',
      date: 'February 22, 2018',
@@ -104,13 +104,7 @@ app.get('/:articleName', function(req, res) {
     res.send(createTemplate(articles[articleName]));
 });
  
-app.get('/article-two', function(req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
 
-app.get('/article-three', function(req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
