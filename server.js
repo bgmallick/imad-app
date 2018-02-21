@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne = {
+var articles ={
+articleOne : {
      title : 'Article One | Bishal Guha Mallick',
      heading: 'Article One',
      date: 'February 20, 2018',
@@ -19,6 +20,37 @@ var articleOne = {
                 <p>
                     This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
                 </p> `
+},
+articleTwo : {
+    title : 'Article Two | Bishal Guha Mallick',
+     heading: 'Article Two',
+     date: 'February 21, 2018',
+     content: `<p> 
+                        This is my second article after a long time in HTML. Hopfully as I take this course something will come out of it and I will benfit from this course.
+                    This is just repetetion. This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+               </p>
+               <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p>
+                <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p> `
+},
+articleThree : {
+    title : 'Article Three | Bishal Guha Mallick',
+     heading: 'Article Three',
+     date: 'February 22, 2018',
+     content: `<p> 
+                        This is my third article after a long time in HTML. Hopfully as I take this course something will come out of it and I will benfit from this course.
+                    This is just repetetion. This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+               </p>
+               <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p>
+                <p>
+                    This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
+                </p> `
+}
 };
 
 function createTemplate (data) {
@@ -66,8 +98,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res) {
-    res.send(createTemplate(articleOne));
+app.get('/:articleName', function(req, res) {
+    //articleName == article-one
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
  
 app.get('/article-two', function(req, res) {
