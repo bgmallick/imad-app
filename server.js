@@ -6,10 +6,10 @@ var app = express();
 app.use(morgan('combined'));
 
 var articleOne = {
-    title : 'Article One | Bishal Guha Mallick',
-     heading: 'Article One'
+     title : 'Article One | Bishal Guha Mallick',
+     heading: 'Article One',
      date: 'February 20, 2018',
-     content: `<p>
+     content: `<p> 
                         This is my first article after a long time in HTML. Hopfully as I take this course something will come out of it and I will benfit from this course.
                     This is just repetetion. This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.This is just repetetion.
                </p>
@@ -55,10 +55,7 @@ function createTemplate (data) {
                                 </div>
                             </body>
                         </html>
-                            
-                        
-    
-    `;
+                        `;
     return htmlTemplate;
 }
 
